@@ -18,4 +18,28 @@ public class MarkdownParseTest {    //Declares the MarkdownParseTest class
         ArrayList<String> links = MarkdownParse.getLinks(content);
         assertArrayEquals(new Object[]{"https://something.com","some-thing.html"},links.toArray());
     }
+
+    @Test
+    public void test_test_file_1() throws IOException{
+        Path fileName = Path.of("test-file-1.md");
+        String content = Files.readString(fileName);
+        ArrayList<String> links = MarkdownParse.getLinks(content);
+        assertArrayEquals(new Object[]{"my-page.html"},links.toArray());
+    }
+
+    @Test
+    public void test_test_file_2() throws IOException{
+        Path fileName = Path.of("test-file-2.md");
+        String content = Files.readString(fileName);
+        ArrayList<String> links = MarkdownParse.getLinks(content);
+        assertArrayEquals(new Object[]{"linkie.html"},links.toArray());
+    }
+
+    @Test
+    public void test_test_file_3() throws IOException{
+        Path fileName = Path.of("test-file-3.md");
+        String content = Files.readString(fileName);
+        ArrayList<String> links = MarkdownParse.getLinks(content);
+        assertArrayEquals(new Object[0],links.toArray());
+    }
 }                                   //Close brace
