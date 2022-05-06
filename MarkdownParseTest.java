@@ -8,6 +8,7 @@ import org.junit.*;                 //Imports everything from JUnit
 public class MarkdownParseTest {    //Declares the MarkdownParseTest class
     @Test                           //Annotation to mark the method as a JUnit test
     public void addition() {        //Method representing an addition unit test
+        System.out.println();
         assertEquals(2, 1 + 1);     //Errors if 2 != 1 + 1, passes otherwise
     }                               //Close brace
 
