@@ -46,7 +46,7 @@ public class MarkdownParseTest {    //Declares the MarkdownParseTest class
 
     @Test
     public void test_snippet_1() throws IOException{
-        Path fileName = Path.of("C:\\Users\\wow13524\\Documents\\GitHub\\markdown-parser\\snippet-1.md");
+        Path fileName = Path.of("snippet-1.md");
         String content = Files.readString(fileName);
         ArrayList<String> links = MarkdownParse.getLinks(content);
         assertArrayEquals(new Object[]{"`google.com","google.com","ucsd.edu"},links.toArray());
