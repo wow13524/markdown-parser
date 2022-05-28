@@ -67,4 +67,9 @@ public class MarkdownParseTest {    //Declares the MarkdownParseTest class
         ArrayList<String> links = MarkdownParse.getLinks(content);
         assertArrayEquals(new Object[]{"https://sites.google.com/eng.ucsd.edu/cse-15l-spring-2022/schedule"},links.toArray());
     }
+
+    @Test
+    public void failing_test() throws Exception{
+        throw new Exception();
+    }
 }                                   //Close brace
