@@ -41,7 +41,7 @@ public class MarkdownParse {
     public static ArrayList<String> getLinks(String markdown) {
         ArrayList<String> toReturn = new ArrayList<>();
         // find the next [, then find the ], then find the (, then read link upto next )
-        int currentIndex = 0;
+        int currentIndex = -1;
         while(currentIndex < markdown.length()) {
             int openBracket = indexOfMarkdown(markdown,"[",currentIndex);
             int closeBracket = indexOfMarkdown(markdown,"]", openBracket);
@@ -51,6 +51,8 @@ public class MarkdownParse {
 
             //break if no more link patterns are found
             if(openBracket < 0 || closeBracket < 0 || openParen < 0 || closeParen < 0){
+                //System.out.println("END");
+                //System.out.printf("%d %d %d %d%n",openBracket,closeBracket,openParen,closeParen);
                 break;
             }
 
@@ -58,22 +60,27 @@ public class MarkdownParse {
 
             //continue if link is actually an image
             if((openBracket != 0 && markdown.charAt(openBracket-1) == '!')){
+                //System.out.println("IMAGE");
                 continue;
             }
             //continue if there is a space between ] and ()
             if(openParen != closeBracket + 1){
+                //System.out.println("DISCONNECT");
                 continue;
             }
             //continue if there is a space in the middle of the link
             if(spaceInLink != -1 && spaceInLink <= closeParen){
+                //System.out.println("GAP");
                 continue;
             }
             //continue if there is a line break in the text
             if(markdown.substring(openBracket+1,closeBracket).contains("\n\n")){
+                //System.out.println("TEXTLB");
                 continue;
             }
             //continue if there is a line break in the link
             if(markdown.substring(openParen+1,closeParen).contains("\n\n")){
+                //System.out.println("LINKLB");
                 continue;
             }
 
